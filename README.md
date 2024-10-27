@@ -93,55 +93,44 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 <div id="evoucher-list" class="evoucher-list"></div>
 
 <script>
-  async function loadEvouchers() {
-    var url = "dev.msradius.com";
-    try {
-      const response = await fetch("https://" + url + "/api/evoucher");
-      if (response.ok) {
-        const res = await response.json();
+    async function loadEvouchers() {
+        var url = "dev.msradius.com";
+        try {
+            const response = await fetch('https://'+url+'/api/evoucher');
+            if (response.ok) {
+                const res = await response.json();
 
-        const evoucherList = document.getElementById("evoucher-list");
-        var v = "";
-        for (let index = 0; index < res.data.length; index++) {
-          const element = res.data[index];
-          console.log(element);
-          v +=
-            `
+                const evoucherList = document.getElementById('evoucher-list');
+                var v = "";
+                for (let index = 0; index < res.data.length; index++) {
+                    const element = res.data[index];
+                    console.log(element); 
+                    v += `
                         <div class="voucher-card">
                             <div class="voucher-details">
                                 <h3>${element.profile_name}</h3>
-                                <p><strong>Time Limit : </strong> ${
-                                  element.time_limit
-                                }</p>
-                                <p><strong>Quota Limit : </strong> ${
-                                  element.quota_limit
-                                }</p>
-                                <p><strong>Active Period : </strong> ${
-                                  element.active_period
-                                }</p>
+                                <p><strong>Time Limit : </strong> ${element.time_limit}</p>
+                                <p><strong>Quota Limit : </strong> ${element.quota_limit}</p>
+                                <p><strong>Active Period : </strong> ${element.active_period}</p>
                                 <p><strong>Price : </strong> ${element.price_sell.toLocaleString()}</p>
                             </div>
                             <div class="button-group">
-                                <a href="https://` +
-            url +
-            `/store?unique=${element.id}&qty=1" class="btn-buy-one" target="_blank">Buy 1</a>
-                                <a href="https://` +
-            url +
-            `/store?unique=${element.id}" class="btn-buy-bulk" target="_blank">Buy +++</a>
+                                <a href="https://`+url+`/store?unique=${element.id}&qty=1" class="btn-buy-one" target="_blank">Buy 1</a>
+                                <a href="https://`+url+`/store?unique=${element.id}" class="btn-buy-bulk" target="_blank">Buy +++</a>
                             </div>
                         </div>
                     `;
+                }
+                evoucherList.innerHTML = v;
+            } else {
+                console.error('Failed to fetch e-vouchers:', response.status);
+            }
+        } catch (error) {
+            console.error('Error fetching e-vouchers:', error);
         }
-        evoucherList.innerHTML = v;
-      } else {
-        console.error("Failed to fetch e-vouchers:", response.status);
-      }
-    } catch (error) {
-      console.error("Error fetching e-vouchers:", error);
     }
-  }
 
-  window.onload = loadEvouchers;
+    window.onload = loadEvouchers;
 </script>
 
 <p class="info">Powered by MSRadius &copy; 2024</p>
