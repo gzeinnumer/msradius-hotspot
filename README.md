@@ -135,3 +135,33 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
 <p class="info">Powered by MSRadius &copy; 2024</p>
 ```
+
+# walled-garden
+
+```
+/ip hotspot walled-garden ip
+add action=accept disabled=no comment="MS-MSRADIUS" dst-host="demo.msradius.com";
+add action=accept disabled=no comment="MS-DUITKU" dst-host="duitku.com";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="midtrans.com";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="app.sandbox.midtrans.com";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="app.midtrans.com";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="cloudfront.net";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="d2f3dnusg0rbp7.cloudfront.net";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="bam.nr-data.net";
+add action=accept disabled=no comment="MS-MIDTRANS" dst-host="snap-web-raccoon-integration.gojekapi.com";
+add action=accept disabled=no comment="MS-MIDTRANS GOPAY" dst-host="api.midtrans.com";
+add action=accept disabled=no comment="MS-MIDTRANS GOPAY" dst-host="gopay.co.id";
+add action=accept disabled=no comment="MS-MIDTRANS GOPAY" dst-host="snap.midtrans.com";
+add action=accept disabled=no comment="MS-MIDTRANS GOPAY" dst-host="payment.midtrans.com";
+add action=accept disabled=no comment="MS-DANA" dst-host="m.dana.id";
+add action=accept disabled=no comment="MS-DANA" dst-host="dana.id";
+add action=accept disabled=no comment="MS-DANA" dst-host="split.io";
+add action=accept disabled=no comment="MS-DANA" dst-host="sdk.split.io";
+add action=accept disabled=no comment="MS-DANA" dst-host="auth.split.io";
+add action=accept disabled=no comment="MS-DANA" dst-host="events.split.io";
+add action=accept disabled=no comment="MS-DANA" dst-host="a.m.dana.id";
+add action=accept disabled=no comment="MS-DANA" dst-host="mas-log1.saas.dana.id";
+add action=accept disabled=no comment="MS-DANA" dst-host="api-js.mixpanel.com";
+add action=accept disabled=no comment="MS-DANA" dst-host="captcha.saas.dana.id";
+add action=accept disabled=no comment="MS-DANA" dst-host="dana-assets-id.oss-ap-southeast-5.aliyuncs.com";
+```
