@@ -8,6 +8,7 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
 ## List EVoucher
 
+<img src="img/img4.png"/>
 ```
                 <!-- LIST EVOUCHER START-->
                 <p class="info">Buy Evoucher</p>
@@ -58,11 +59,14 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
                 </script>
                 <p class="info">Powered by MSRadius &copy; 2024</p>
                 <!-- LIST EVOUCHER END-->
+
 ```
 
 ## REGISTER MEMBER
 
+<img src="img/img3.png"/>
 ```
+
                 <!-- REGISTER MEMBER START-->
                 <p class="info">Register Member</p>
                 <p class="info">Silahkan daftar untuk dapat menggunakan firut Whatsapp BOT dari penyedia jasa intenet sebagai Membership</p>
@@ -119,11 +123,14 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
                     });
                 </script>
                 <!-- REGISTER MEMBER END-->
+
 ```
 
 ## CHECK VOUCHER
 
+<img src="img/img2.png"/>
 ```
+
                 <!-- CHECK STATUS START-->
                 <p class="info">Check Status</p>
                 <p class="info">Silahkan masukan username mengecheck status voucher.</p>
@@ -165,11 +172,15 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
                     });
                 </script>
                 <!-- CHECK STATUS END-->
+
 ```
 
 ## OPTIMIZE VOUCHER
 
+
+<img src="img/img1.png"/>
 ```
+
                 <!-- OPTIMIZE START-->
                 <p class="info">Optimize Username</p>
                 <p class="info">Silahkan masukan username untuk memperbaiki username yang tidak bisa login sebelum expired.</p>
@@ -212,6 +223,7 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
                     });
                 </script>
                 <!-- OPTIMIZE END-->
+
 ```
 
 # STYLE
@@ -297,11 +309,13 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
         /* E VOUCHER STYLE END */
     </style>
+
 ```
 
 # walled-garden
 
 ```
+
 /ip hotspot walled-garden ip
 add action=accept disabled=no comment="MS-MSRADIUS" dst-host="demo.msradius.com";
 add action=accept disabled=no comment="MS-DUITKU" dst-host="duitku.com";
@@ -327,4 +341,7 @@ add action=accept disabled=no comment="MS-DANA" dst-host="mas-log1.saas.dana.id"
 add action=accept disabled=no comment="MS-DANA" dst-host="api-js.mixpanel.com";
 add action=accept disabled=no comment="MS-DANA" dst-host="captcha.saas.dana.id";
 add action=accept disabled=no comment="MS-DANA" dst-host="dana-assets-id.oss-ap-southeast-5.aliyuncs.com";
+
+```
+
 ```
