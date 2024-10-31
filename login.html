@@ -149,10 +149,11 @@
 
                     <input type="submit" value="Connect" />
                 </form>
+
                 <!-- OPTIMIZE START-->
+                <p class="info">Optimize Username</p>
+                <p class="info">Silahkan masukan username untuk memperbaiki username yang tidak bisa login sebelum expired.</p>
                 <form id="optimizeForm">
-                    <p class="info">Optimize Username</p>
-                    <p class="info">Silahkan masukan username untuk memperbaiki username yang tidak bisa login sebelum expired.</p>
                     <label>
                         <img class="ico" src="img/voucher.svg" alt="#" />
                         <input name="unique" type="text" placeholder="Username" />
@@ -164,24 +165,20 @@
                         e.preventDefault();
                         const form = this;
                         const formData = new FormData(this);
-                        const data = {
-                            unique: formData.get('unique'),
-                        };
 
                         try {
-                            const response = await fetch('https://dev.msradius.com/api/optimizeusername', {
-                                method: 'POST',
+                            const response = await fetch('https://dev.msradius.com/api/optimizeusername?unique='+ formData.get('unique'), {
+                                method: 'GET',
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify(data)
                             });
 
                             if (response.ok) {
                                 const result = await response.json();
                                 if (result.code == 200) {
                                     form.reset();
-                                    alert('Optimize successful!');
+                                    alert('Optimize successful! please try login again');
                                 } else {
                                     alert('Failed to Optimize.');
                                 }
@@ -195,10 +192,11 @@
                     });
                 </script>
                 <!-- OPTIMIZE END-->
+                
                 <!-- CHECK STATUS START-->
+                <p class="info">Check Status</p>
+                <p class="info">Silahkan masukan username mengecheck status voucher.</p>
                 <form id="checkForm">
-                    <p class="info">Check Status</p>
-                    <p class="info">Silahkan masukan username mengecheck status voucher.</p>
                     <label>
                         <img class="ico" src="img/voucher.svg" alt="#" />
                         <input name="unique" type="text" placeholder="Username" />
@@ -210,17 +208,13 @@
                         e.preventDefault();
                         const form = this;
                         const formData = new FormData(this);
-                        const data = {
-                            unique: formData.get('unique'),
-                        };
 
                         try {
-                            const response = await fetch('https://dev.msradius.com/api/optimizeusername', {
-                                method: 'POST',
+                            const response = await fetch('https://dev.msradius.com/api/checkusername?unique=' + formData.get('unique'), {
+                                method: 'GET',
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
-                                body: JSON.stringify(data)
                             });
 
                             if (response.ok) {
@@ -242,9 +236,9 @@
                 <!-- CHECK STATUS END-->
 
                 <!-- REGISTER MEMBER START-->
+                <p class="info">Register Member</p>
+                <p class="info">Silahkan daftar untuk dapat menggunakan firut Whatsapp BOT dari penyedia jasa intenet sebagai Membership</p>
                 <form id="registerForm">
-                    <p class="info">Register Member</p>
-                    <p class="info">Silahkan daftar untuk dapat menggunakan firut Whatsapp BOT dari penyedia jasa intenet sebagai Membership</p>
                     <label>
                         <img class="ico" src="img/whatsapp.svg" alt="#" />
                         <input name="whatsapp" type="number" placeholder="Whatsapp" />
@@ -301,7 +295,6 @@
                 <!-- LIST EVOUCHER START-->
                 <p class="info">Buy Evoucher</p>
                 <div id="evoucher-list" class="evoucher-list"></div>
-
                 <script>
                     async function loadEvouchers() {
                         try {
