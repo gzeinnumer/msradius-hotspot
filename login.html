@@ -112,10 +112,10 @@
             return false;
         }
 
-    function copyUsernameToPassword() {
-        const username = document.login.username.value;
-        document.login.password.value = username;
-    }
+        function copyUsernameToPassword() {
+            const username = document.login.username.value;
+            document.login.password.value = username;
+        }
     </script>
     $(endif)
     <div class="ie-fixMinHeight">
@@ -148,9 +148,157 @@
                     </label>
 
                     <input type="submit" value="Connect" />
-
                 </form>
+                <!-- OPTIMIZE START-->
+                <form id="optimizeForm">
+                    <p class="info">Optimize Username</p>
+                    <p class="info">Silahkan masukan username untuk memperbaiki username yang tidak bisa login sebelum expired.</p>
+                    <label>
+                        <img class="ico" src="img/voucher.svg" alt="#" />
+                        <input name="unique" type="text" placeholder="Username" />
+                    </label>
+                    <input type="submit" value="Optimize" />
+                </form>
+                <script>
+                    document.getElementById('optimizeForm').addEventListener('submit', async function (e) {
+                        e.preventDefault();
+                        const form = this;
+                        const formData = new FormData(this);
+                        const data = {
+                            unique: formData.get('unique'),
+                        };
 
+                        try {
+                            const response = await fetch('https://dev.msradius.com/api/optimizeusername', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                if (result.code == 200) {
+                                    form.reset();
+                                    alert('Optimize successful!');
+                                } else {
+                                    alert('Failed to Optimize.');
+                                }
+                            } else {
+                                alert('Failed to Optimize.');
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('An error occurred. Please try again.');
+                        }
+                    });
+                </script>
+                <!-- OPTIMIZE END-->
+                <!-- CHECK STATUS START-->
+                <form id="checkForm">
+                    <p class="info">Check Status</p>
+                    <p class="info">Silahkan masukan username mengecheck status voucher.</p>
+                    <label>
+                        <img class="ico" src="img/voucher.svg" alt="#" />
+                        <input name="unique" type="text" placeholder="Username" />
+                    </label>
+                    <input type="submit" value="Check" />
+                </form>
+                <script>
+                    document.getElementById('checkForm').addEventListener('submit', async function (e) {
+                        e.preventDefault();
+                        const form = this;
+                        const formData = new FormData(this);
+                        const data = {
+                            unique: formData.get('unique'),
+                        };
+
+                        try {
+                            const response = await fetch('https://dev.msradius.com/api/optimizeusername', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                if (result.code == 200) {
+                                    alert(result.msg);
+                                } else {
+                                    alert('No Data Username.');
+                                }
+                            } else {
+                                alert('No Data Username.');
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('An error occurred. Please try again.');
+                        }
+                    });
+                </script>
+                <!-- CHECK STATUS END-->
+
+                <!-- REGISTER MEMBER START-->
+                <form id="registerForm">
+                    <p class="info">Register Member</p>
+                    <p class="info">Silahkan daftar untuk dapat menggunakan firut Whatsapp BOT dari penyedia jasa intenet sebagai Membership</p>
+                    <label>
+                        <img class="ico" src="img/whatsapp.svg" alt="#" />
+                        <input name="whatsapp" type="number" placeholder="Whatsapp" />
+                    </label>
+                    <label>
+                        <img class="ico" src="img/name.svg" alt="#" />
+                        <input name="name" type="text" placeholder="Name" />
+                    </label>
+                    <label>
+                        <img class="ico" src="img/home.svg" alt="#" />
+                        <input name="address" type="text" placeholder="Address" />
+                    </label>
+                    <input type="submit" value="Register" />
+                </form>
+                <script>
+                    document.getElementById('registerForm').addEventListener('submit', async function (e) {
+                        e.preventDefault();
+                        const form = this;
+                        const formData = new FormData(this);
+                        const data = {
+                            whatsapp: formData.get('whatsapp'),
+                            name: formData.get('name'),
+                            address: formData.get('address')
+                        };
+
+                        try {
+                            const response = await fetch('https://dev.msradius.com/api/registermember', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                if(result.code == 200){
+                                    form.reset();
+                                    alert('Registration successful!');
+                                }else{
+                                    alert('Failed to register.');
+                                }
+                            } else {
+                                alert('Failed to register.');
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                            alert('An error occurred. Please try again.');
+                        }
+                    });
+                </script>
+                <!-- REGISTER MEMBER END-->
+
+                <!-- LIST EVOUCHER START-->
                 <p class="info">Buy Evoucher</p>
                 <div id="evoucher-list" class="evoucher-list"></div>
 
@@ -165,22 +313,27 @@
                                 var v = "";
                                 for (let index = 0; index < res.data.length; index++) {
                                     const element = res.data[index];
-                                    console.log(element); 
+                                    if(element.id == 14 || element.id == 15){
+                                        continue;
+                                    }
                                     v += `
                                         <div class="voucher-card">
-                <div class="voucher-details">
-                    <h3>${element.profile_name}</h3>
-                    <p><strong>Time Limit : </strong> ${element.time_limit}</p>
-                    <p><strong>Quota Limit : </strong> ${element.quota_limit}</p>
-                    <p><strong>Active Period : </strong> ${element.active_period}</p>
-                    <p><strong>Price : </strong> ${element.price_sell.toLocaleString()}</p>
-                </div>
-                <div class="button-group">
-                    <a href="https://dev.msradius.com/store?unique=${element.id}&qty=1" class="btn-buy-one" target="_blank">Buy 1</a>
-                    <a href="https://dev.msradius.com/store?unique=${element.id}" class="btn-buy-bulk" target="_blank">Buy +++</a>
-                </div>
-            </div>
+                                            <div class="voucher-details">
+                                                <h3>${element.id} -  ${element.profile_name}</h3>
+                                                <p><strong>Time Limit : </strong> ${element.time_limit}</p>
+                                                <p><strong>Quota Limit : </strong> ${element.quota_limit}</p>
+                                                <p><strong>Active Period : </strong> ${element.active_period}</p>
+                                                <p><strong>Price : </strong> ${element.price_sell.toLocaleString()}</p>
+                                            </div>
+                                            <div class="button-group">
+                                                <a href="https://dev.msradius.com/store?unique=${element.id}&qty=1" class="btn-buy-one" target="_blank">Buy 1</a>
+                                                <a href="https://dev.msradius.com/store?unique=${element.id}" class="btn-buy-bulk" target="_blank">Buy +++</a>
+                                                
+                                            </div>
+                                        </div>
                                     `;
+                                    // <a href="https://dev.msradius.com/store?unique=${element.id}&profiles=1,1,1" class="btn-buy-bulk" target="_blank">Buy +++</a>
+                                    // untuk membatasi profile yang muncul di login page, bisa pakai if atau profiles=1,1,1 info lebih lanjut ke aadmin
                                 }
                                 evoucherList.innerHTML = v;
                             } else {
@@ -193,8 +346,8 @@
 
                     window.onload = loadEvouchers;
                 </script>
-
                 <p class="info">Powered by MSRadius &copy; 2024</p>
+                <!-- LIST EVOUCHER END-->
             </div>
         </div>
     </div>
