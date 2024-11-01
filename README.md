@@ -371,6 +371,10 @@ add action=accept disabled=no comment="MS-DANA" dst-host="api-js.mixpanel.com";
 add action=accept disabled=no comment="MS-DANA" dst-host="captcha.saas.dana.id";
 add action=accept disabled=no comment="MS-DANA" dst-host="dana-assets-id.oss-ap-southeast-5.aliyuncs.com";
 
+/ip firewall address-list add list=gopay_walled_garden address=gopay.co.id
+/ip firewall address-list add list=gopay_walled_garden address=api.gopay.co.id
+/ip firewall address-list add list=gopay_walled_garden address=midtrans.com
+/ip hotspot walled-garden ip add action=accept src-address-list=gopay_walled_garden
 ```
 
 ```
