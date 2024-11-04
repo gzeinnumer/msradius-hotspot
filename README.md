@@ -8,7 +8,9 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
 ## List EVoucher
 
-![](https://ibb.co.com/Qn2ffJc)
+<p align="center">
+  <img src="https://ibb.co.com/Qn2ffJc" width="400"/>
+</p>
 
 ```html
 <!-- LIST EVOUCHER START-->
@@ -76,7 +78,9 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
 ## REGISTER MEMBER
 
-![](https://ibb.co.com/Ry6gM1Q)
+<p align="center">
+  <img src="https://ibb.co.com/Ry6gM1Q" width="400"/>
+</p>
 
 ```html
 <!-- REGISTER MEMBER START-->
@@ -147,7 +151,9 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
 ## CHECK VOUCHER
 
-![](https://ibb.co.com/wCQynZk)
+<p align="center">
+  <img src="https://ibb.co.com/wCQynZk" width="400"/>
+</p>
 
 ```html
 <!-- CHECK STATUS START-->
@@ -201,7 +207,9 @@ jika kamu tetap mau gunakan halaman Login Page kamu, cukup paste kodingan kami k
 
 ## OPTIMIZE VOUCHER
 
-![](https://ibb.co.com/t45PqHP)
+<p align="center">
+  <img src="https://ibb.co.com/t45PqHP" width="400"/>
+</p>
 
 ```html
 <!-- OPTIMIZE START-->
