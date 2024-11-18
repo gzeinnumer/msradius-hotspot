@@ -40,30 +40,30 @@
     </script>
     $(endif)
     <div class="ie-fixMinHeight">
-        <div class="main">
-            <div class="wrap animated fadeIn">
+        <div class="main-ms">
+            <div class="wrap-ms animated-ms fadeIn">
                 <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
                     <input type="hidden" name="dst" value="$(link-orig)" />
                     <input type="hidden" name="popup" value="true" />
                     <br>
-                    <img src="img/logo_white.png" class="image-logo image-logo-background">
+                    <img src="img/logo_white.png" class="image-logo-ms image-logo-ms-background">
                     <br>
-                    <p class="info $(if error)alert$(endif)">
+                    <p class="info-ms $(if error)alert$(endif)">
                         $(if error == "")Please log in to use the internet hotspot service $(if trial == 'yes')<br />Free trial available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)
                         $(endif)
 
                         $(if error)$(error)$(endif)
                     </p>
                     <label>
-                        <img class="ico" src="img/user.svg" alt="#" />
+                        <img class="ico-ms" src="img/user.svg" alt="#" />
                         <input name="username" type="text" value="$(username)" placeholder="Username" />
                     </label>
 
                     <label>
-                        <img class="ico" src="img/password.svg" alt="#" />
-                        <div class="input-group">
+                        <img class="ico-ms" src="img/password.svg" alt="#" />
+                        <div class="input-group-ms">
                         <input name="password" type="password" placeholder="Password" />
-                        <button type="button" class="btn-copy" onclick="copyUsernameToPassword()">Copy</button>
+                        <button type="button" class="btn-copy-ms" onclick="copyUsernameToPassword()">Copy</button>
                         </div>
 
                     </label>
@@ -72,11 +72,11 @@
                 </form>
 
                 <!-- OPTIMIZE START-->
-                <p class="info">Optimize Username</p>
-                <p class="info">Silahkan masukan username untuk memperbaiki username yang tidak bisa login sebelum expired.</p>
+                <p class="info-ms">Optimize Username</p>
+                <p class="info-ms">Silahkan masukan username untuk memperbaiki username yang tidak bisa login sebelum expired.</p>
                 <form id="optimizeForm">
                     <label>
-                        <img class="ico" src="img/voucher.svg" alt="#" />
+                        <img class="ico-ms" src="img/voucher.svg" alt="#" />
                         <input name="unique" type="text" placeholder="Username" />
                     </label>
                     <input type="submit" value="Optimize" />
@@ -115,11 +115,11 @@
                 <!-- OPTIMIZE END-->
                 
                 <!-- CHECK STATUS START-->
-                <p class="info">Check Status</p>
-                <p class="info">Silahkan masukan username mengecheck status voucher.</p>
+                <p class="info-ms">Check Status</p>
+                <p class="info-ms">Silahkan masukan username mengecheck status voucher.</p>
                 <form id="checkForm">
                     <label>
-                        <img class="ico" src="img/voucher.svg" alt="#" />
+                        <img class="ico-ms" src="img/voucher.svg" alt="#" />
                         <input name="unique" type="text" placeholder="Username" />
                     </label>
                     <input type="submit" value="Check" />
@@ -157,19 +157,19 @@
                 <!-- CHECK STATUS END-->
 
                 <!-- REGISTER MEMBER START-->
-                <p class="info">Register Member</p>
-                <p class="info">Silahkan daftar untuk dapat menggunakan firut Whatsapp BOT dari penyedia jasa intenet sebagai Membership</p>
+                <p class="info-ms">Register Member</p>
+                <p class="info-ms">Silahkan daftar untuk dapat menggunakan firut Whatsapp BOT dari penyedia jasa intenet sebagai Membership</p>
                 <form id="registerForm">
                     <label>
-                        <img class="ico" src="img/whatsapp.svg" alt="#" />
+                        <img class="ico-ms" src="img/whatsapp.svg" alt="#" />
                         <input name="whatsapp" type="number" placeholder="Whatsapp" />
                     </label>
                     <label>
-                        <img class="ico" src="img/name.svg" alt="#" />
+                        <img class="ico-ms" src="img/name.svg" alt="#" />
                         <input name="name" type="text" placeholder="Name" />
                     </label>
                     <label>
-                        <img class="ico" src="img/home.svg" alt="#" />
+                        <img class="ico-ms" src="img/home.svg" alt="#" />
                         <input name="address" type="text" placeholder="Address" />
                     </label>
                     <input type="submit" value="Register" />
@@ -214,8 +214,8 @@
                 <!-- REGISTER MEMBER END-->
 
                 <!-- LIST EVOUCHER START-->
-                <p class="info">Buy Evoucher</p>
-                <div id="evoucher-list" class="evoucher-list"></div>
+                <p class="info-ms">Buy Evoucher</p>
+                <div id="evoucher-list-ms" class="evoucher-list-ms"></div>
                 <script>
                     async function loadEvouchers() {
                         try {
@@ -223,7 +223,7 @@
                             if (response.ok) {
                                 const res = await response.json();
 
-                                const evoucherList = document.getElementById('evoucher-list');
+                                const evoucherList = document.getElementById('evoucher-list-ms');
                                 var v = "";
                                 //for (let index = res.data.length-1; index >= 0; index--) { // Buat Urutan Jadi terbalik
                                 for (let index = 0; index < res.data.length; index++) {
@@ -233,21 +233,21 @@
                                     //     continue;
                                     // }
                                     v += `
-                                        <div class="voucher-card">
-                                            <div class="voucher-details">
+                                        <div class="voucher-card-ms">
+                                            <div class="voucher-details-ms">
                                                 <h3>${element.id} -  ${element.profile_name}</h3>
                                                 <p><strong>Time Limit : </strong> ${element.time_limit}</p>
                                                 <p><strong>Quota Limit : </strong> ${element.quota_limit}</p>
                                                 <p><strong>Active Period : </strong> ${element.active_period}</p>
                                                 <p><strong>Price : </strong> ${element.price_sell.toLocaleString()}</p>
                                             </div>
-                                            <div class="button-group">
-                                                <a href="https://dev.msradius.com/store?unique=${element.id}" class="btn-buy-bulk" target="_blank">Buy +++</a>
+                                            <div class="button-group-ms">
+                                                <a href="https://dev.msradius.com/store?unique=${element.id}" class="btn-buy-bulk-ms" target="_blank">Buy +++</a>
                                             </div>
                                         </div>
                                     `;
-                                    // <a href="https://dev.msradius.com/store?unique=${element.id}&profiles=1,1,1" class="btn-buy-bulk" target="_blank">Buy +++</a>
-                                    // untuk membatasi profile yang muncul di login page, bisa pakai if atau profiles=1,1,1 info lebih lanjut ke admin
+                                    // <a href="https://dev.msradius.com/store?unique=${element.id}&profiles=1,1,1" class="btn-buy-bulk-ms" target="_blank">Buy +++</a>
+                                    // untuk membatasi profile yang muncul di login page, bisa pakai if atau profiles=1,1,1 info-ms lebih lanjut ke admin
                                 }
                                 evoucherList.innerHTML = v;
                             } else {
@@ -260,7 +260,7 @@
 
                     window.onload = loadEvouchers;
                 </script>
-                <p class="info">Powered by MSRadius &copy; 2024</p>
+                <p class="info-ms">Powered by MSRadius &copy; 2024</p>
                 <!-- LIST EVOUCHER END-->
             </div>
         </div>
