@@ -10,87 +10,7 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="expires" content="-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* Evoucher STYLE */
-        .evoucher-list {
-            max-width: 600px;
-            margin: auto;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .voucher-card {
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, .8);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .voucher-details {
-            flex: 1;
-            padding-right: 10px;
-        }
-
-        .voucher-details h3 {
-            margin: 0 0 8px;
-            font-size: 20px;
-            color: #333;
-        }
-
-        .voucher-details p {
-            margin: 4px 0;
-            color: #666;
-        }
-
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: flex-end;
-        }
-
-        .btn-buy-one,
-        .btn-buy-bulk {
-            text-decoration: none;
-            padding: 10px 15px;
-            color: #fff;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            font-size: 14px;
-            width: 100px;
-            /* Adjust button width */
-            text-align: center;
-        }
-
-        .btn-buy-one {
-            background: #3e4d59;
-            border-radius: 16px;
-        }
-
-        .btn-buy-one:hover {
-            background: #3e4d59;
-            border-radius: 16px;
-        }
-
-        .btn-buy-bulk {
-            background: #3e4d59;
-            border-radius: 16px;
-        }
-
-        .btn-buy-bulk:hover {
-            background: #3e4d59;
-            border-radius: 16px;
-        }
-
-        /* E VOUCHER STYLE END */
-    </style>
+    <link rel="stylesheet" href="css/style-ms.css">
 </head>
 
 <body>
@@ -104,6 +24,7 @@
     </form>
 
     <script src="md5.js"></script>
+
     <script>
         function doLogin() {
             document.sendin.username.value = document.login.username.value;
@@ -222,7 +143,7 @@
                                 if (result.code == 200) {
                                     alert(result.msg);
                                 } else {
-                                    alert('No Data Username.');
+                                    alert(result.msg);
                                 }
                             } else {
                                 alert('No Data Username.');
@@ -279,7 +200,7 @@
                                     form.reset();
                                     alert('Registration successful!');
                                 }else{
-                                    alert('Failed to register.');
+                                    alert(result.msg);
                                 }
                             } else {
                                 alert('Failed to register.');
@@ -304,11 +225,13 @@
 
                                 const evoucherList = document.getElementById('evoucher-list');
                                 var v = "";
+                                //for (let index = res.data.length-1; index >= 0; index--) { // Buat Urutan Jadi terbalik
                                 for (let index = 0; index < res.data.length; index++) {
                                     const element = res.data[index];
-                                    if(element.id == 14 || element.id == 15){
-                                        continue;
-                                    }
+                                    //Gunakan ini untuk menghilang beberapa profile, gunakan ID sebagai patokan, contoh 
+                                    // if(element.id == 14 || element.id == 15){
+                                    //     continue;
+                                    // }
                                     v += `
                                         <div class="voucher-card">
                                             <div class="voucher-details">
@@ -319,14 +242,12 @@
                                                 <p><strong>Price : </strong> ${element.price_sell.toLocaleString()}</p>
                                             </div>
                                             <div class="button-group">
-                                                <a href="https://dev.msradius.com/store?unique=${element.id}&qty=1" class="btn-buy-one" target="_blank">Buy 1</a>
                                                 <a href="https://dev.msradius.com/store?unique=${element.id}" class="btn-buy-bulk" target="_blank">Buy +++</a>
-                                                
                                             </div>
                                         </div>
                                     `;
                                     // <a href="https://dev.msradius.com/store?unique=${element.id}&profiles=1,1,1" class="btn-buy-bulk" target="_blank">Buy +++</a>
-                                    // untuk membatasi profile yang muncul di login page, bisa pakai if atau profiles=1,1,1 info lebih lanjut ke aadmin
+                                    // untuk membatasi profile yang muncul di login page, bisa pakai if atau profiles=1,1,1 info lebih lanjut ke admin
                                 }
                                 evoucherList.innerHTML = v;
                             } else {

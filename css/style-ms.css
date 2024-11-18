@@ -330,3 +330,81 @@ table td:first-child {
     border-radius: 16px;
     padding: 10px;;
 }
+
+/* Evoucher STYLE */
+.evoucher-list {
+    max-width: 600px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.voucher-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, .8);
+    display: flex;
+    justify-content: space-between;
+}
+
+.voucher-details {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.voucher-details h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: #333;
+}
+
+.voucher-details p {
+    margin: 4px 0;
+    color: #666;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.btn-buy-one,
+.btn-buy-bulk {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    width: 100px;
+    /* Adjust button width */
+    text-align: center;
+}
+
+.btn-buy-one {
+    background: #3e4d59;
+    border-radius: 16px;
+}
+
+.btn-buy-one:hover {
+    background: #3e4d59;
+    border-radius: 16px;
+}
+
+.btn-buy-bulk {
+    background: #3e4d59;
+    border-radius: 16px;
+}
+
+.btn-buy-bulk:hover {
+    background: #3e4d59;
+    border-radius: 16px;
+}
+
+/* E VOUCHER STYLE END */
